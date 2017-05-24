@@ -1,0 +1,9 @@
+{
+    "compilerOptions": {
+        "alwaysStrict": true,
+        "sourceMap": true,
+        "module": "system",
+        "outDir": "src/js",
+        "target": "es6"
+    }
+}
