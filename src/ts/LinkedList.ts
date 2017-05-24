@@ -1,29 +1,41 @@
-import { IEnumerable } from './IEnumerable';
-import { ListNode } from './ListNode';
-export class LinkedList<T> implements IEnumerable{
-    constructor(){}
-    
-    add<T>(index: number,node: ListNode<T>) {
-        throw "Not yet implemented."
+import { IEnumerable } from "./IEnumerable";
+import { ListNode } from "./ListNode";
+export class LinkedList<T> implements IEnumerable {
+
+    private size: number = 0;
+
+    private tail: ListNode<T> = null;
+
+    constructor(private head: ListNode<T> = null) {
+        if (head) {
+            this.tail = head;
+            this.size++;
+        }
     }
 
-    enumerate<T>(): ListNode<T>[] {
-        throw "Not yet implemented.";
+    public add<T>(index: number, node: ListNode<T>) {
+        if (this.size === 0 && index !== 0) {
+            throw new Error("Index does not exist.");
+        }
     }
 
-    get<T>(index: number): ListNode<T> {
-        throw "Not yet implemented."
+    public enumerate<T>(): Array<ListNode<T>> {
+        throw new Error("Not yet implemented.");
     }
 
-    peek<T>(): ListNode<T> {
-        throw "Not yet implemented."
+    public get<T>(index: number): ListNode<T> {
+        throw new Error("Not yet implemented.");
     }
 
-    push<T>(node: ListNode<T>): number {
-        throw "Not yet implemented."
+    public peek<T>(): ListNode<T> {
+        throw new Error("Not yet implemented.");
     }
 
-    pop<T>(): ListNode<T> {
-        throw "Not yet implemented."
+    public push<T>(node: ListNode<T>): number {
+        throw new Error("Not yet implemented.");
+    }
+
+    public pop<T>(): ListNode<T> {
+        throw new Error("Not yet implemented.");
     }
 }

@@ -1,6 +1,8 @@
 export class ListNode<T> {
 
-    constructor(private nodeValue: T = null, private previousNode: ListNode<T> = null, private nextNode: ListNode<T> = null) {}
+    constructor(private nodeValue: T = null,
+                private previousNode: ListNode<T> = null,
+                private nextNode: ListNode<T> = null) {}
 
     get previous(): ListNode<T> {
         return this.previousNode;
