@@ -6,17 +6,17 @@ System.register([], function (exports_1, context_1) {
         setters: [],
         execute: function () {
             LinkedList = class LinkedList {
-                constructor(head = null) {
-                    this.head = head;
-                    this.size = 0;
-                    this.tail = null;
-                    if (head) {
-                        this.tail = head;
-                        this.size++;
+                constructor(_head = null) {
+                    this._head = _head;
+                    this._count = 0;
+                    this._tail = null;
+                    if (_head) {
+                        this._tail = _head;
+                        this._count++;
                     }
                 }
                 add(index, node) {
-                    if (this.size === 0 && index !== 0) {
+                    if (this._count === 0 && index !== 0) {
                         throw new Error("Index does not exist.");
                     }
                 }
@@ -25,6 +25,15 @@ System.register([], function (exports_1, context_1) {
                 }
                 get(index) {
                     throw new Error("Not yet implemented.");
+                }
+                get first() {
+                    return this._head;
+                }
+                get last() {
+                    return this._tail;
+                }
+                get count() {
+                    return this._count;
                 }
                 getEnumerator() {
                     throw new Error("Not yet implemented.");

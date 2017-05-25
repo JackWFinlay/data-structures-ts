@@ -8,15 +8,17 @@ System.register([], function (exports_1, context_1) {
             ListEnumerator = class ListEnumerator {
                 constructor(linkedList) {
                     this.linkedList = linkedList;
+                    this.currentNode = null;
+                    this.currentNode = linkedList.first;
                 }
                 current() {
-                    throw new Error("Not yet implemented.");
+                    return this.currentNode;
                 }
                 moveNext() {
-                    throw new Error("Not yet implemented.");
+                    return this.currentNode.next;
                 }
                 reset() {
-                    throw new Error("Not yet implemented.");
+                    this.currentNode = this.linkedList.first;
                 }
             };
             exports_1("ListEnumerator", ListEnumerator);

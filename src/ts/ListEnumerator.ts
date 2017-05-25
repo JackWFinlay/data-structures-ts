@@ -2,21 +2,23 @@ import { IEnumerator } from "./IEnumerator";
 import { LinkedList } from "./LinkedList";
 import { ListNode } from "./ListNode";
 
-export class ListEnumerator<T> implements IEnumerator {
+export class ListEnumerator<T> implements IEnumerator<T> {
+
+    private currentNode: ListNode<T> = null;
 
     constructor(private linkedList: LinkedList<T>) {
-
+        this.currentNode = linkedList.first;
     }
     public current(): ListNode<T> {
-        throw new Error("Not yet implemented.");
+        return this.currentNode;
     }
 
     public moveNext(): ListNode<T> {
-        throw new Error("Not yet implemented.");
+        return this.currentNode.next;
     }
 
     public reset(): void {
-        throw new Error("Not yet implemented.");
+        this.currentNode = this.linkedList.first;
     }
 
 }
