@@ -15,17 +15,47 @@ export class LinkedList<T> implements IEnumerable, IList {
         }
     }
 
-    public add<T>(index: number, node: ListNode<T>) {
-        if (this._count === 0 && index !== 0) {
-            throw new Error("Index does not exist.");
+    public insert(index: number, value: T) {
+
+        if (index < 0 || index > this._count) {
+            throw new Error("Index out of bounds.");
         }
+
+        const newNode: ListNode<T> = new ListNode<T>(value);
+
+        if (this._count === 0 && index === 0) {
+            this._head = newNode;
+            this._tail = this._head;
+            this._count++;
+        } else if (index === 0) {
+            this._head.previous = newNode;
+            newNode.next = this._head;
+            this._head = newNode;
+        } else {
+            let current: ListNode<T> = this._head;
+
+            for (let j = 0; j < index; j++) {
+                current = current.next;
+            }
+
+            if (current === null) {
+                this._tail.next = newNode;
+                newNode.previous = this._tail;
+                this._tail = newNode;
+            }
+        }
+
     }
 
-    public asArray<T>(): Array<ListNode<T>> {
+    public addFirst(value: T) {
+        this.insert(0, value);
+    }
+
+    public asArray(): Array<ListNode<T>> {
         throw new Error("Not yet implemented.");
     }
 
-    public get<T>(index: number): ListNode<T> {
+    public get(index: number): ListNode<T> {
         throw new Error("Not yet implemented.");
     }
 
@@ -45,15 +75,5 @@ export class LinkedList<T> implements IEnumerable, IList {
         throw new Error("Not yet implemented.");
     }
 
-    public peek<T>(): ListNode<T> {
-        throw new Error("Not yet implemented.");
-    }
 
-    public push<T>(node: ListNode<T>): number {
-        throw new Error("Not yet implemented.");
-    }
-
-    public pop<T>(): ListNode<T> {
-        throw new Error("Not yet implemented.");
-    }
 }

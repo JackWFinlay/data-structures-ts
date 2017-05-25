@@ -6,14 +6,14 @@ System.register([], function (exports_1, context_1) {
         setters: [],
         execute: function () {
             AbstractNode = class AbstractNode {
-                constructor(nodeValue = null) {
-                    this.nodeValue = nodeValue;
+                constructor(_value = null) {
+                    this._value = _value;
                 }
                 get value() {
-                    return this.nodeValue;
+                    return this._value;
                 }
                 set value(value) {
-                    this.nodeValue = value;
+                    this._value = value;
                 }
             };
             exports_1("AbstractNode", AbstractNode);

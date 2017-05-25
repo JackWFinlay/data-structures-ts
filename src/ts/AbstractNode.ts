@@ -1,12 +1,12 @@
 export class AbstractNode<T> {
 
-    constructor(private nodeValue: T = null) {}
+    constructor(private _value: T = null) {}
 
     public get value(): T {
-        return this.nodeValue;
+        return this._value;
     }
 
     public set value(value: T){
-        this.nodeValue = value;
+        this._value = value;
     }
 }

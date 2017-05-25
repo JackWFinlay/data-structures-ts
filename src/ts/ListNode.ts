@@ -1,23 +1,25 @@
 import { AbstractNode } from "./AbstractNode";
 export class ListNode<T> extends AbstractNode<T> {
 
-    private previousNode: ListNode<T> = null;
-    private nextNode: ListNode<T> = null;
-    constructor() { super(); }
+    private _previous: ListNode<T> = null;
+    private _next: ListNode<T> = null;
+    constructor(value: T) {
+        super(value);
+    }
 
     get previous(): ListNode<T> {
-        return this.previousNode;
+        return this._previous;
     }
 
     set previous(previous: ListNode<T>) {
-        this.previousNode = previous;
+        this._previous = previous;
     }
 
     get next(): ListNode<T> {
-        return this.nextNode;
+        return this._next;
     }
 
     set next(node: ListNode<T>){
-        this.nextNode = node;
+        this._next = node;
     }
 }

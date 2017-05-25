@@ -10,22 +10,22 @@ System.register(["./AbstractNode"], function (exports_1, context_1) {
         ],
         execute: function () {
             ListNode = class ListNode extends AbstractNode_1.AbstractNode {
-                constructor() {
-                    super();
-                    this.previousNode = null;
-                    this.nextNode = null;
+                constructor(value) {
+                    super(value);
+                    this._previous = null;
+                    this._next = null;
                 }
                 get previous() {
-                    return this.previousNode;
+                    return this._previous;
                 }
                 set previous(previous) {
-                    this.previousNode = previous;
+                    this._previous = previous;
                 }
                 get next() {
-                    return this.nextNode;
+                    return this._next;
                 }
                 set next(node) {
-                    this.nextNode = node;
+                    this._next = node;
                 }
             };
             exports_1("ListNode", ListNode);
