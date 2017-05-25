@@ -1,6 +1,7 @@
 import { IEnumerable } from "./IEnumerable";
+import { IList } from "./IList";
 import { ListNode } from "./ListNode";
-export class LinkedList<T> implements IEnumerable {
+export class LinkedList<T> implements IEnumerable, IList {
 
     private size: number = 0;
 
@@ -19,11 +20,15 @@ export class LinkedList<T> implements IEnumerable {
         }
     }
 
-    public enumerate<T>(): Array<ListNode<T>> {
+    public asArray<T>(): Array<ListNode<T>> {
         throw new Error("Not yet implemented.");
     }
 
     public get<T>(index: number): ListNode<T> {
+        throw new Error("Not yet implemented.");
+    }
+
+    public getEnumerator(): ListEnumerator<T> {
         throw new Error("Not yet implemented.");
     }
 

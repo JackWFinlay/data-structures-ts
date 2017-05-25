@@ -1,8 +1,9 @@
-export class ListNode<T> {
+import { AbstractNode } from "./AbstractNode";
+export class ListNode<T> extends AbstractNode<T> {
 
-    constructor(private nodeValue: T = null,
-                private previousNode: ListNode<T> = null,
-                private nextNode: ListNode<T> = null) {}
+    private previousNode: ListNode<T> = null;
+    private nextNode: ListNode<T> = null;
+    constructor() { super(); }
 
     get previous(): ListNode<T> {
         return this.previousNode;
@@ -18,9 +19,5 @@ export class ListNode<T> {
 
     set next(node: ListNode<T>){
         this.nextNode = node;
-    }
-
-    get value(): T {
-        return this.nodeValue;
     }
 }
