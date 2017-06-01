@@ -6,8 +6,8 @@ export class ListEnumerator<T> implements IEnumerator<T> {
 
     private currentNode: ListNode<T> = null;
 
-    constructor(private linkedList: LinkedList<T>) {
-        this.currentNode = linkedList.first;
+    constructor(private _linkedList: LinkedList<T>) {
+        this.currentNode = _linkedList.first;
     }
     public current(): ListNode<T> {
         return this.currentNode;
@@ -18,7 +18,7 @@ export class ListEnumerator<T> implements IEnumerator<T> {
     }
 
     public reset(): void {
-        this.currentNode = this.linkedList.first;
+        this.currentNode = this._linkedList.first;
     }
 
 }

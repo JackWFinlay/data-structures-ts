@@ -51,8 +51,13 @@ export class LinkedList<T> implements IEnumerable, IList {
         this.insert(0, value);
     }
 
-    public asArray(): Array<ListNode<T>> {
-        throw new Error("Not yet implemented.");
+    public asArray(): T[] {
+        const array: T[] = [];
+        const enumerator: ListEnumerator<T> = this.getEnumerator();
+        while ( enumerator.moveNext().value !== null) {
+            array.push(enumerator.current().value);
+        }
+        return array;
     }
 
     public get(index: number): ListNode<T> {
@@ -72,7 +77,7 @@ export class LinkedList<T> implements IEnumerable, IList {
     }
 
     public getEnumerator(): ListEnumerator<T> {
-        throw new Error("Not yet implemented.");
+        return new ListEnumerator(this);
     }
 
 
