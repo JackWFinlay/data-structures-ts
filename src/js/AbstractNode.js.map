@@ -1,1 +1,0 @@
-{"version":3,"file":"AbstractNode.js","sourceRoot":"","sources":["../ts/AbstractNode.ts"],"names":[],"mappings":";;;;;;;YAAA,eAAA;gBAEI,YAAoB,SAAY,IAAI;oBAAhB,WAAM,GAAN,MAAM,CAAU;gBAAG,CAAC;gBAExC,IAAW,KAAK;oBACZ,MAAM,CAAC,IAAI,CAAC,MAAM,CAAC;gBACvB,CAAC;gBAED,IAAW,KAAK,CAAC,KAAQ;oBACrB,IAAI,CAAC,MAAM,GAAG,KAAK,CAAC;gBACxB,CAAC;aACJ,CAAA"}
