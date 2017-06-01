@@ -1,2 +1,2 @@
 // ignore js folder - to reduce git changes - users can compile for themselves.
-src/js
+src/js/
