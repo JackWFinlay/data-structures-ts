@@ -81,5 +81,4 @@ export class LinkedList<T> implements IEnumerable, IList {
         return new ListEnumerator(this);
     }
 
-
 }
