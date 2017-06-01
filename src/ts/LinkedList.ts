@@ -57,6 +57,7 @@ export class LinkedList<T> implements IEnumerable, IList {
         while ( enumerator.moveNext().value !== null) {
             array.push(enumerator.current().value);
         }
+
         return array;
     }
 
