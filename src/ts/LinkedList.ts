@@ -31,23 +31,14 @@ export class LinkedList<T> implements IEnumerable, IList {
             this.addLast(value);
 
         } else {
-            let current: ListNode<T> = this._head;
-
-            for (let j = 0; (j < index) && (current !== null); j++) {
-                current = current.next;
-            }
-
-            const newNode: ListNode<T> = new ListNode<T>(value);
-            current.previous.next = newNode;
-            newNode.next = current;
-            current.previous = newNode;
-
+            this.addAtIndex(index, value);
         }
         this._count++;
     }
 
     public addFirst(value: T) {
         const newNode: ListNode<T> = new ListNode<T>(value);
+
         this._head.previous = newNode;
         newNode.next = this._head;
         this._head = newNode;
@@ -55,6 +46,7 @@ export class LinkedList<T> implements IEnumerable, IList {
 
     public addLast(value: T) {
         const newNode: ListNode<T> = new ListNode<T>(value);
+
         this._tail.next = newNode;
         newNode.previous = this._tail;
         this._tail = newNode;
@@ -63,11 +55,16 @@ export class LinkedList<T> implements IEnumerable, IList {
     public asArray(): T[] {
         const array: T[] = [];
         const enumerator: ListEnumerator<T> = this.getEnumerator();
+
         while ( enumerator.moveNext().value !== null) {
             array.push(enumerator.current().value);
         }
 
         return array;
+    }
+
+    public clear(): void {
+        this._head = null;
     }
 
     public get(index: number): ListNode<T> {
@@ -96,10 +93,35 @@ export class LinkedList<T> implements IEnumerable, IList {
         return new ListEnumerator(this);
     }
 
+    public remove(index: number): void {
+        if (index === 0) {
+            // Set new _head.
+            this._head = this._head.next;
+
+            // Remove _head previous link.
+            this._head.previous = null;
+        }
+    }
+
     private addHead(value: T) {
         const newNode: ListNode<T> = new ListNode<T>(value);
+
+        // Add new head node and set it as tail.
         this._head = newNode;
         this._tail = this._head;
     }
 
+    private addAtIndex(index: number, value: T) {
+        let current: ListNode<T> = this._head;
+
+        for (let j = 0; (j < index) && (current !== null); j++) {
+            current = current.next;
+        }
+
+        const newNode: ListNode<T> = new ListNode<T>(value);
+
+        current.previous.next = newNode;
+        newNode.next = current;
+        current.previous = newNode;
+    }
 }
