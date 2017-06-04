@@ -62,7 +62,13 @@ export class LinkedList<T> implements IEnumerable, IList {
     }
 
     public get(index: number): ListNode<T> {
-        throw new Error("Not yet implemented.");
+        let current = this._head;
+
+        for (let i = 0; i <= index ; i++ ) {
+            current = current.next;
+        }
+
+        return current;
     }
 
     public get first(): ListNode<T> {
