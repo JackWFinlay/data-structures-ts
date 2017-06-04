@@ -21,34 +21,43 @@ export class LinkedList<T> implements IEnumerable, IList {
             throw new Error("Index out of bounds.");
         }
 
-        const newNode: ListNode<T> = new ListNode<T>(value);
-
         if (this._count === 0 && index === 0) {
-            this._head = newNode;
-            this._tail = this._head;
-            this._count++;
+            this.addHead(value);
+
         } else if (index === 0) {
-            this._head.previous = newNode;
-            newNode.next = this._head;
-            this._head = newNode;
+            this.addFirst(value);
+
+        } else if (index === (this.count - 1)) {
+            this.addLast(value);
+
         } else {
             let current: ListNode<T> = this._head;
 
-            for (let j = 0; j < index; j++) {
+            for (let j = 0; (j < index) && (current !== null); j++) {
                 current = current.next;
             }
 
-            if (current === null) {
-                this._tail.next = newNode;
-                newNode.previous = this._tail;
-                this._tail = newNode;
-            }
-        }
+            const newNode: ListNode<T> = new ListNode<T>(value);
+            current.previous.next = newNode;
+            newNode.next = current;
+            current.previous = newNode;
 
+        }
+        this._count++;
     }
 
     public addFirst(value: T) {
-        this.insert(0, value);
+        const newNode: ListNode<T> = new ListNode<T>(value);
+        this._head.previous = newNode;
+        newNode.next = this._head;
+        this._head = newNode;
+    }
+
+    public addLast(value: T) {
+        const newNode: ListNode<T> = new ListNode<T>(value);
+        this._tail.next = newNode;
+        newNode.previous = this._tail;
+        this._tail = newNode;
     }
 
     public asArray(): T[] {
@@ -85,6 +94,12 @@ export class LinkedList<T> implements IEnumerable, IList {
 
     public getEnumerator(): ListEnumerator<T> {
         return new ListEnumerator(this);
+    }
+
+    private addHead(value: T) {
+        const newNode: ListNode<T> = new ListNode<T>(value);
+        this._head = newNode;
+        this._tail = this._head;
     }
 
 }
